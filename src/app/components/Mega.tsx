@@ -1,7 +1,5 @@
-import React from 'react'
+import React from 'react';
 import BlogCard from '../components/BlogCard';
-import { title } from 'process';
-
 
 export default function Mega() {
     const posts = [
@@ -95,27 +93,24 @@ export default function Mega() {
             description: "Take your web development skills to the next level with advanced techniques and practices. This blog covers topics such as performance optimization, automation, testing, and building scalable applications that handle heavy traffic and complex functionality.",
             image: "../images/Slide15.jpg"
         }
-        
     ];
+
     return (
         <div className='my-8'>
-            <h1 className='text-3xl font-bold text-center my-8 text-red-600 animate-color-change'>Exploring the world of AI and Technology
+            <h1 className='text-3xl font-bold text-center my-8 text-red-600 animate-color-change'>
+                Exploring the world of AI and Technology
             </h1>
 
-            <div className='grid grid-col-1 sm:-grid-col-2 lg:grid-cols-3 gap-8'>
+            <div className='grid grid-col-1 sm:grid-col-2 lg:grid-cols-3 gap-8'>
                 {posts.map((post, index) => (
                     <div className='fade-in' key={post.id}>
                         <div className='Blog-card'>
-                            <BlogCard post={post} isDarkBackground={index % 2 === 0}/>
-                        </div>{" "}
+                            <BlogCard post={post} isDarkBackground={index % 2 === 0} />
+                        </div>
                     </div>
                 ))}
-
             </div>
         </div>
-    )
+    );
 }
-
-
-
 
