@@ -32,17 +32,28 @@ const posts: Post[] = [
   // Rest of the posts
 ];
 
-// PageProps ka type declare karna
-interface PageProps {
+type PageProps = {
   params: {
     id: string;
   };
+};
+
+export async function getServerSideProps({ params }: { params: { id: string } }) {
+  // Fetch data based on params.id
+  const post = posts.find((p) => p.id === params.id);
+
+  if (!post) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: { post }, // Return the found post as a prop
+  };
 }
 
-export default function Post({ params }: PageProps) {
-  const { id } = params;
-  const post = posts.find((p) => p.id === id);
-
+const Post = ({ post }: { post: Post }) => {
   if (!post) {
     return (
       <h2 className="text-2xl font-bold text-center mt-10">Post Not Found</h2>
@@ -79,4 +90,6 @@ export default function Post({ params }: PageProps) {
       <AuthorCard />
     </div>
   );
-}
+};
+
+export default Post;
