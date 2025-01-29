@@ -1,4 +1,5 @@
-'use client';
+'use client'; // Use client-side rendering
+
 import React, { useEffect, useState } from 'react';
 import CommentSection from '@/app/components/CommentSection';
 import AuthorCard from '@/app/components/AuthorCard';
@@ -23,13 +24,7 @@ const posts: Post[] = [
     description: "CSS (Cascading Style Sheets) is what makes web pages visually appealing. This blog covers how CSS helps style HTML elements, including text, colors, layouts, and more. Learn how to create flexible, responsive designs with CSS.",
     image: "../images/Slide2.jpg"
   },
-  {
-    id: "3",
-    title: "JavaScript Fundamentals",
-    description: "JavaScript is the scripting language that brings interactivity to web pages. From variables to functions, events to DOM manipulation, this blog dives deep into JavaScript's fundamental concepts and real-world applications.",
-    image: "../images/Slide3.jpg"
-  },
-  // Rest of the posts
+  // Add other posts as necessary
 ];
 
 type PageProps = {
@@ -88,3 +83,10 @@ const Post = ({ params }: PageProps) => {
 };
 
 export default Post;
+
+
+
+
+
+
+
