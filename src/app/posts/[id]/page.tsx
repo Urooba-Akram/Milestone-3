@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import CommentSection from '@/app/components/CommentSection';
 import AuthorCard from '@/app/components/AuthorCard';
 
@@ -38,22 +38,17 @@ type PageProps = {
   };
 };
 
-export async function getServerSideProps({ params }: { params: { id: string } }) {
-  // Fetch data based on params.id
-  const post = posts.find((p) => p.id === params.id);
+const Post = ({ params }: PageProps) => {
+  const { id } = params;
+  const [post, setPost] = useState<Post | null>(null);
 
-  if (!post) {
-    return {
-      notFound: true,
-    };
-  }
+  useEffect(() => {
+    const fetchedPost = posts.find((p) => p.id === id);
+    if (fetchedPost) {
+      setPost(fetchedPost);
+    }
+  }, [id]);
 
-  return {
-    props: { post }, // Return the found post as a prop
-  };
-}
-
-const Post = ({ post }: { post: Post }) => {
   if (!post) {
     return (
       <h2 className="text-2xl font-bold text-center mt-10">Post Not Found</h2>
